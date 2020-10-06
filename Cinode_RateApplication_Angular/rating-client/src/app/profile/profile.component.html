@@ -1,0 +1,8 @@
+<div>
+  <h2>Sign up</h2>
+  <profile-signup (save)="save($event)"></profile-signup>
+</div>
+<div *ngIf="profiles$ | async as profiles">
+  <h2>Profiles</h2>
+  <profile-list [profiles]="profiles"></profile-list>
+</div>

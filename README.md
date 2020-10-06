@@ -1,0 +1,2 @@
+# cinode-rating
+:-)

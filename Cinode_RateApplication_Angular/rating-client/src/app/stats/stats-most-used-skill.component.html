@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Namn</th>
+      <th>Antal</th>
+      <th>Genomsnitt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let mus of mostusedskills; trackBy: trackByMus; let i = index"
+      role="presentation"
+    >
+      <td>{{ mus.name }}</td>
+      <td>{{ mus.count }}</td>
+      <td>{{ mus.averageRating | number: "1.2-2" }}</td>
+    </tr>
+  </tbody>
+</table>

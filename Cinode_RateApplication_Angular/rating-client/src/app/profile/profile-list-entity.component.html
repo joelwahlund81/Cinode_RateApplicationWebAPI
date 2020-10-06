@@ -1,0 +1,15 @@
+<div class="card shadow">
+  <div class="card-content">
+    <h3>
+      {{ profile.fullName }}
+      <small *ngIf="profile.isAnonymous">(Hemlig)</small>
+    </h3>
+  </div>
+  <div class="card-footer">
+    <div class="skill-tag" *ngFor="let skill of profile.skills">
+      <label
+        >{{ skill.skill }} <span>{{ skill.rating }}</span></label
+      >
+    </div>
+  </div>
+</div>

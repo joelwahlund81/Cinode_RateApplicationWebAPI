@@ -1,0 +1,35 @@
+@import "../shared/styles/button.css";
+@import "../shared/styles/radiobutton.css";
+@import "../shared/styles/tables.css";
+
+input {
+  width: -webkit-fill-available;
+  border-radius: none;
+  height: 20px;
+}
+
+.input-container:last-of-type {
+  margin-bottom: 20px;
+}
+
+.input-container:last-of-type > input:first-of-type {
+  margin-bottom: 10px;
+}
+
+table {
+  margin-top: 10px;
+}
+
+table .radio-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+table .radio-container label {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+table strong {
+  cursor: pointer;
+}

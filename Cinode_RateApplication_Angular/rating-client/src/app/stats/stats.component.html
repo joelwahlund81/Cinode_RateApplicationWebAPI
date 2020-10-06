@@ -1,0 +1,6 @@
+<div *ngIf="mostusedskills$ | async as mostusedskills">
+  <h2>Mest använda</h2>
+  <stats-most-used-skill
+    [mostusedskills]="mostusedskills"
+  ></stats-most-used-skill>
+</div>

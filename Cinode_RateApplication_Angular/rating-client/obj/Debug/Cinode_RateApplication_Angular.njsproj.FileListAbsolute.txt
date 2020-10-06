@@ -1,0 +1,3 @@
+C:\Users\admin\source\repos\Cinode_RateApplicationWebAPI\Cinode_RateApplication_Angular\rating-client\obj\Debug\Cinode_RateApplication_Angular.njsprojAssemblyReference.cache
+C:\Users\admin\source\repos\Cinode_RateApplicationWebAPI\Cinode_RateApplication_Angular\rating-client\obj\Debug\Cinode_RateApplication_Angular.njsproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Cinode_RateApplicationWebAPI\Cinode_RateApplication_Angular\rating-client\bin\Microsoft.NodejsTools.WebRole.dll

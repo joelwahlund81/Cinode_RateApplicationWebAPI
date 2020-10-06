@@ -1,0 +1,6 @@
+<div
+  *ngFor="let profile of profiles; trackBy: trackByProfile; let i = index"
+  role="presentation"
+>
+  <profile-list-entity [profile]="profile"></profile-list-entity>
+</div>

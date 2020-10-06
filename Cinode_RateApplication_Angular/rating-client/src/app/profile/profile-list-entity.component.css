@@ -1,0 +1,44 @@
+@import "../shared/styles/box-shadow.css";
+
+.card {
+  border: 1px solid gainsboro;
+
+  margin-bottom: 20px;
+}
+
+.card .card-content {
+  padding: 8px 25px;
+
+  background-color: #fafafa;
+  border-bottom: 1px solid gainsboro;
+}
+
+.card .card-content small {
+  color: gainsboro;
+}
+
+.card .card-footer {
+  padding: 12px 25px;
+  background-color: white;
+}
+
+.card .card-footer .skill-tag {
+  display: inline-block;
+  padding: 4px 2px;
+}
+
+.card .card-footer .skill-tag label {
+  border: 1.5px solid gainsboro;
+  border-radius: 6px;
+  padding: 0 0 0 4px;
+  background-color: #f5de83;
+  border-right: none;
+}
+
+.card .card-footer .skill-tag span {
+  border-radius: 6px;
+  border: 1px solid lightgray;
+  background-color: gainsboro;
+  padding: 0 4px;
+  color: black;
+}

@@ -1,0 +1,99 @@
+<div>
+  <div class="input-container">
+    <label for="firstName">Firstname</label>
+    <input
+      id="firstName"
+      [value]="firstName"
+      (input)="firstName = $event.target.value"
+      type="text"
+      maxlength="50"
+      formControlName="firstName"
+    />
+  </div>
+
+  <div class="input-container">
+    <label for="lastName">Lastname</label>
+    <input
+      id="lastName"
+      [value]="lastName"
+      (input)="lastName = $event.target.value"
+      type="text"
+      maxlength="50"
+      formControlName="lastName"
+    />
+  </div>
+
+  <div class="input-container">
+    <label for="skills">Skill</label>
+    <input
+      id="skills"
+      [value]="skillName"
+      (input)="skillName = $event.target.value"
+      type="text"
+      maxlength="50"
+    />
+  </div>
+  <div class="input-container">
+    <div class="radio-container">
+      <span *ngFor="let skill of SkillRatingArray(); let i = index">
+        <input
+          type="radio"
+          (click)="setSkillRating(i)"
+          value="{{ i }}"
+          name="skill-level"
+          id="skill-level-{{ i }}"
+        />
+        <label for="skill-level-{{ i }}">{{ i }}</label>
+      </span>
+      <button type="button" (click)="addSkill()">Add skill</button>
+    </div>
+  </div>
+
+  <table *ngIf="newProfile.skills.length > 0">
+    <thead>
+      <tr>
+        <th>Skill</th>
+        <th>Rating</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let skill of newProfile.skills; let i = index"
+        role="presentation"
+      >
+        <td>{{ skill.skill }}</td>
+        <td>
+          <div class="radio-container">
+            <span
+              *ngFor="let skillCheckbox of SkillRatingArray(); let ii = index"
+            >
+              <input
+                type="radio"
+                [value]="ii"
+                name="skill-level-for"
+                id="skill-level-for-{{ i }}-{{ ii }}"
+                [checked]="skill.rating == ii"
+              />
+              <label for="skill-level-for-{{ i }}-{{ ii }}">{{ ii }}</label>
+            </span>
+          </div>
+        </td>
+        <td (click)="removeSkill(skill, i)">
+          <strong title="Remove this skill">x</strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="button-container">
+    <button type="button" (click)="clear()">Clear</button>
+    <button
+      type="button"
+      [disabled]="newProfile.skills.length < 4"
+      (click)="saveProfile()"
+    >
+      Save
+    </button>
+  </div>
+</div>

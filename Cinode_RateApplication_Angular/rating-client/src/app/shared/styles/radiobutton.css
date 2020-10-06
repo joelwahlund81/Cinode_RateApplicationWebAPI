@@ -1,0 +1,42 @@
+.radio-container {
+  margin-top: 10px;
+}
+
+.radio-container label,
+.radio-container input {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.radio-container span:first-of-type input[type="radio"] {
+  margin: 0;
+}
+
+.radio-container input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+  width: 0;
+}
+
+.radio-container input[type="radio"]:checked + label,
+.Checked + label {
+  background: orange;
+}
+
+.radio-container label {
+  padding: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  z-index: 90;
+  display: inline-block;
+}
+
+.radio-container label:hover {
+  background: #ddd;
+}
+
+.radio-container span:last-of-type ~ button {
+  float: right;
+}

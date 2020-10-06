@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Piazzolla:wght@100&display=swap");
+
+main {
+  font-family: "Piazzolla", serif;
+}
+
+main h1 {
+  font-size: 40px;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: orange;
+}
+
+main .content-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+main .content-container .column {
+  flex-direction: column;
+  width: 32vw;
+}

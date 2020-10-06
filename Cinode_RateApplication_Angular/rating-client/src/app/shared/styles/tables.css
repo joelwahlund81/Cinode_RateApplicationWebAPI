@@ -1,0 +1,21 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid gainsboro;
+  border-collapse: collapse;
+  cursor: default;
+}
+
+table th {
+  background-color: #fafafa;
+  padding: 5px 0 8px 0;
+  border-bottom: 1px solid gainsboro;
+}
+
+table tr {
+  text-align: center;
+}
+
+table tbody tr:hover {
+  background-color: gainsboro;
+}
