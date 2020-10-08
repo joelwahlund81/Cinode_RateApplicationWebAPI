@@ -20,7 +20,7 @@ steps:
     azureSubscription: 'Visual Studio Enterprise(e38d97a8-422c-4062-9504-cdfd139568de)'
     appType: 'webApp'
     WebAppName: 'CinodeRateApplicationWebAPI'
-    packageForLinux: 'dist/'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/Cinode_RateApplication_Angular/cinode-rating/dist/'
 - script: |
     npm install -g @angular/cli
     npm install
