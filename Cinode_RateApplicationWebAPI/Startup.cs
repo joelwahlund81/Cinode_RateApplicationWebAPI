@@ -59,9 +59,6 @@ namespace Cinode_RateApplicationWebAPI
                 config.PostProcess = document =>
                 {
                     document.Info.Version = "v1";
-                    document.Info.Title = "Inte TäckTabellArmén Utan En Helt Egen";
-                    document.Info.Description = "Används till att pyssla med egna TTA tabeller samt lite annat smått och gott.";
-                    document.Info.TermsOfService = "None";
                     document.Info.Contact = new NSwag.OpenApiContact
                     {
                         Name = "Joel Wahlund",
