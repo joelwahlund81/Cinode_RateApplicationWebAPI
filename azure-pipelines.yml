@@ -9,21 +9,64 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Visual Studio Enterprise(e38d97a8-422c-4062-9504-cdfd139568de)'
-    appType: 'webApp'
-    WebAppName: 'rating-angular-client'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/Cinode_RateApplication_Angular/cinode-rating/dist/'
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build
+    variables:
+      - name: r2mApi.url
+        value: 'https://r2m-app-dev-api.azurewebsites.net'
+    pool:
+      vmImage: $(vmImageName)
+
+    steps:
+    - task: Npm@1
+      displayName: 'Install packages'
+      inputs:
+        command: 'install'
+        workingDir: '$(System.DefaultWorkingDirectory)'
+
+    - task: Npm@1
+      displayName: 'build'
+      inputs:
+        command: custom
+        customCommand: 'run build'
+        workingDir: '$(System.DefaultWorkingDirectory)'
+
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
+
+    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      artifact: drop
+
+- stage: Production
+  displayName: Deploy production
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment: 'rating-angular-client'
+    pool: 
+      vmImage: $(vmImageName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureRmWebAppDeployment@4
+            displayName: 'Deploy to Azure'
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Visual Studio Enterprise(e38d97a8-422c-4062-9504-cdfd139568de)'
+              appType: 'webApp'
+              WebAppName: 'rating-angular-client'
+              package: '$(Pipeline.Workspace)/drop/*.zip'
