@@ -1,6 +1,6 @@
 button {
   background-color: darkorange;
-  border: 2px solid orange;
+  border: 1px solid orange;
   border-radius: none;
   font-family: "Piazzolla", serif;
   color: white;
@@ -11,12 +11,13 @@ button {
 button:disabled {
   background-color: gainsboro;
   border-color: lightgray;
+  color: white;
 }
 
 button:disabled:hover {
   cursor: not-allowed;
+  background-color: gainsboro;
   border-color: lightgray;
-  background-color: orange;
   color: white;
 }
 
@@ -24,7 +25,7 @@ button:hover,
 button:focus,
 button:active {
   background-color: orange;
-  color: black;
+  color: white;
   border-color: darkorange;
 }
 
