@@ -6,9 +6,8 @@
 trigger:
 - master
 
-pool:
+variables:
   vmImage: 'ubuntu-latest'
-
 
 stages:
 - stage: Build
