@@ -22,23 +22,10 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
-    - task: Npm@1
-      displayName: 'Install packages'
-      inputs:
-        command: 'install'
-        workingDir: '$(System.DefaultWorkingDirectory)/Cinode_RateApplication_Angular/cinode-rating/'
-
-    - task: Npm@1
-      displayName: 'build'
-      inputs:
-        command: custom
-        customCommand: 'run build'
-        workingDir: '$(System.DefaultWorkingDirectory)'
-
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/Cinode_RateApplication_Angular/cinode-rating/dist'
         includeRootFolder: false
         archiveType: zip
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
